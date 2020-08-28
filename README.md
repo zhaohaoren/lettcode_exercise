@@ -1,2 +1,2 @@
 # lettcode_daily
-lettcode everyday clock in （just with hope ^_^）
+clock in lettcode everyday （Hopefully ^_^）
