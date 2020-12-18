@@ -1,4 +1,4 @@
-package q3_不同路径;
+package medium.q3_不同路径;
 
 
 /**
