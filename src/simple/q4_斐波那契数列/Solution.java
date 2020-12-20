@@ -12,7 +12,7 @@ package simple.q4_斐波那契数列;
  * 题解：
  * 都差不多
  */
-class Solution {
+public class Solution {
 
     public static int fib(int n) {
         if (n <= 1) {
