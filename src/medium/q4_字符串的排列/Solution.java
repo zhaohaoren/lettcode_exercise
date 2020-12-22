@@ -1,4 +1,4 @@
-package q2;
+package medium.q4_字符串的排列;
 
 import java.util.Arrays;
 
