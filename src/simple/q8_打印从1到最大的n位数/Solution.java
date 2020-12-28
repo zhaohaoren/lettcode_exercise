@@ -1,4 +1,4 @@
-package simple.q7_打印从1到最大的n位数;
+package simple.q8_打印从1到最大的n位数;
 
 import java.util.Arrays;
 
