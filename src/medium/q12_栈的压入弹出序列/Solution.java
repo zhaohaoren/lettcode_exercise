@@ -12,6 +12,13 @@ import java.util.Stack;
  * ↑ 思路是错的 比如 [0, 2, 1] [0, 1, 2]
  * 2. 试着弹一遍
  * 题解：
+ * 自己想复杂了！
+ * 其实就是对着弹出栈的队列模拟一下弹栈顺序：（通过将push栈自己尝试压入一个辅助栈来比较pop栈顺序）
+ * 1. 需要借助一个辅助栈，先按照顺序将push栈顺序压入辅助栈中。
+ * 2. 在取出push压入辅助栈时候，每次都对比下pop栈，如果一样，就要先弹出（代表pop栈弹出push栈的时候，在这个位置也会弹出） 然后pop栈比较下一位
+ * 3. 一直到最后发现栈的尾都一样，说明成功模拟，即得证！
+ *
+ * 这种操作感觉像是抑或，通过2个重复操作还原真实操作。
  *
  * @author zhaohaoren
  */
@@ -20,21 +27,28 @@ class Solution {
 
     @Method(1)
     public boolean validateStackSequences(int[] pushed, int[] popped) {
+        // 辅助栈
         Stack<Integer> stack = new Stack<>();
         int i = 0;
         for(int num : pushed) {
             // num 入栈
             stack.push(num);
-            // 循环判断与出栈
+            // 每次压入辅助栈一个数字，就比较下pop的元素，如果相等就再pop出来，不等就继续
             while(!stack.isEmpty() && stack.peek() == popped[i]) {
                 stack.pop();
+                // 弹出pop后，索引+1，比较pop下一位
                 i++;
             }
         }
+        // 上面如果循环结束了辅助栈 没有弹尽，说明顺序存在问题，无法模拟，即顺序有问题
         return stack.isEmpty();
     }
 
 
+    /**
+     * 我的错误版本：
+     * 整个思路如果细想就站不住脚
+     */
     @Deprecated
     public boolean validateStackSequencesWrong(int[] pushed, int[] popped) {
         if (pushed.length != popped.length) {
