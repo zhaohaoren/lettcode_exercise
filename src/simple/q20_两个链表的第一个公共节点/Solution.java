@@ -23,6 +23,14 @@ import anno.Method;
 
 class Solution {
 
+    public static void main(String[] args) {
+        ListNode n1 = null;
+        ListNode n2 = null;
+        if (n1 == n2){
+            System.out.println("ok");
+        }
+    }
+
 
     /**
      * 题目不行！
@@ -61,17 +69,14 @@ class Solution {
             tmpLong = tmpLong.next;
             step--;
         }
-        while (true) {
+        do {
             if (tmpLong == tmpShort) {
                 return tmpShort;
             } else {
                 tmpLong = tmpLong.next;
                 tmpShort = tmpShort.next;
             }
-            if (tmpLong == null || tmpShort == null) {
-                break;
-            }
-        }
+        } while (tmpLong != null && tmpShort != null);
         return null;
     }
 
